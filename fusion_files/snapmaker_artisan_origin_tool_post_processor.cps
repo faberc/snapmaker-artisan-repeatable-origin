@@ -9,7 +9,7 @@
 description = "Generic Snapmaker (Marlin) - With RPM and Safe Z Clearance";
 vendor = "SNAPMAKER";
 vendorUrl = "http://www.snapmaker.com";
-legal = "Copyright (C) 2016-2018 by Snapmaker, Inc. modded by Gemini";
+legal = "Copyright (C) 2016-2018 by Snapmaker, Inc.";
 certificationLevel = 2;
 minimumRevision = 24000;
 

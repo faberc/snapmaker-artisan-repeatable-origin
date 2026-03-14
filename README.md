@@ -115,19 +115,23 @@ Note: Additional hardware may be specified within Thingiverse documentation.
 1.  **Secure the Stock:** Place your physical material into the corner of the origin tool and secure it to the spoil board using your preferred clamps or tape.
 
 ![Attach Stock To Fixture](images/4.1.0.jpeg)
-> **[IMAGE PLACEHOLDER: A photo of the physical stock material secured tightly into the corner of the origin tool fixture.]**
 
 2.  **Load Job:** Insert the USB drive into the Artisan. Locate and select your `.cnc` file. 
 3.  **Set Work Origin:** Once the job initializes, the Artisan will prompt you to set the work origin. 
     * Slide the **sensor puck** into the circular holster. 
-    * Connect the buzzer alligator clip to the CNC bit.
+    * Connect the probe alligator clip to the CNC bit.
+    * If using a buzzer or multimeter, connect it (see the optional buzzer linked at Thingiverse above)
 
 ![Slide Sensor Puck into Holster](images/4.3.0.jpeg)
-> **NOTE: Retake this photo with the stock in it**
-> **IMAGE PLACEHOLDER: Show connection to the buzzer and alligator clip on bit**
+![Connect Alligator Clip to CNC Bit](images/4.3.1.jpeg)
+![Connect Buzzer to Probe](images/4.3.2.jpeg)
+![Connect Buzzer to Probe](images/4.3.3.jpeg)
+
 
 4.  **Find Zero:** Jog the Z-axis down slowly until the buzzer triggers. (See the [Buzzer Design Link] for circuit details). Set **Z-Zero** and **X/Y Zero** (center of puck) on the controller.
 > **[VIDEO PLACEHOLDER: Video of the physical probing step: the bit touching the puck in the holster with the buzzer clip attached and the buzzer sounding.]**
+
+> **NOTE: The fixture may be updated soon to include a different mechanism for X/Y zeroing. Currently it is just done by eye.**
 
 5.  **Run:** Slide the probe puck out of the holster, disconnect the clip, close the machine doors, and start the job. The custom script will force an initial safety lift before moving toward the stock.
 > **[VIDEO PLACEHOLDER: Video of the job running]**

@@ -4,14 +4,36 @@
 This guide walks you through the usage of this repeatable CNC origin tool. It uses a 3D-printed rail fixture and a cheap Amazon Z-probe, along with a custom post-processor. It should help with quick starting jobs with known stock dimensions, doing bit swaps, and just giving better general confidence when using Fusion 360 for CAD and CAM.
 
 **Required Files:**
-Note: Additional hardware may be specified within Thingiverse documentation.
 * **Origin Tool & Rail Design:** [Thingiverse: Snapmaker Repeatable Origin Fixture](https://www.thingiverse.com/thing:7301429)
-    * Probe and other hardware needed
+    * Download the F3D file and modify it in Fusion to fit your probe before printing.
 * **Optional: Buzzer Probe Hardware:** [Thingiverse: Simple Buzzer Device](https://www.thingiverse.com/thing:7305460)
 * **Custom Post-Processor:** [snapmaker_artisan_origin_tool_post_processor.cps](fusion_files/snapmaker_artisan_origin_tool_post_processor.cps)
 * **Snapmaker Artisan 200W CNC Machine Profile:** [SnapmakerArtisan200WCNC_MachineProfile.mch](fusion_files/SnapmakerArtisan200WCNC_MachineProfile.mch)
 
+
+**Required Hardware:**
+* **Origin Tool/Rail:** 3D printed using the F3D file linked above
+* **M4 Bolts:** To attach the tool to the Artisan spoilboard
+* **Z Probe:** Something similar to https://a.co/d/0c7wyIx8
+* **Optional: Piezo Buzzer Components:** If making the standalone buzzer you will need the components described in the Simple Buzzer Device Thingiverse link above. Otherwise you can make do with a multi-meter with a continuity setting.
+
 ---
+
+## 0. Print the Repeatable Origin Tool
+
+1.  **Upload to Data Panel:** Download the F3D file from the Thingiverse link above, and import it into Fusion. Open the **Data Panel** (grid icon, top left). Click the **Upload** button. In the dialog, select the `RepeatableCNCOriginTool.f3d` file from your computer and click **Upload**. Wait for the status to show "Complete."
+![Upload to Data Panel](images/0.1.0.png)
+![Upload to Data Panel](images/0.1.1.png)
+
+2. **Measure Probe Dimensions:** Assuming you purchased a Z-probe similar to this one: https://a.co/d/0c7wyIx8, measure the probe height and diameter using calipers.
+3. **Update Parameters:** Open the user parameters in Fusion, and update the *ProbeHeight* and *ProbeDiameter* parameters to match your probe.
+> Make a note here about the new XY alignment head once this is tested
+![Change parameters](images/0.3.0.png)
+![Change Parameters](images/0.3.1.png)
+4. **3D Print the Tool:** Export the bodies as meshes/STLs, and print them on your 3D printer.
+![](images/0.4.0.png)
+> Make note on printing the XY tool once that is tested also
+
 
 ## 1. Physical Setup: Mounting and Anchoring the Rail
 
@@ -26,19 +48,16 @@ Note: Additional hardware may be specified within Thingiverse documentation.
 ## 2. Fusion 360 Design Workflow
 
 ### A. Importing the F3D Fixture
-1.  **Upload to Data Panel:** Open the **Data Panel** (grid icon, top left). Click the **Upload** button. In the dialog, select the `RepeatableCNCOriginTool.f3d` file from your computer and click **Upload**. Wait for the status to show "Complete."
-![Upload to Data Panel](images/2.A.1.0.png)
-![Upload to Data Panel](images/2.A.1.1.png)
 
-2.  **Check Design Mode:** Open your project design. If it is currently a "Part" design, right-click the top-level name in the Browser and select **Switch to Hybrid Design**. This is required to see the assembly and "Insert Component" commands.
-![Switch to Hybrid Design](images/2.A.2.0.png)
-![Switch to Hybrid Design](images/2.A.2.1.png)
-![Switch to Hybrid Design](images/2.A.2.2.png)
+1.  **Check Design Mode:** Open your project design. If it is currently a "Part" design, right-click the top-level name in the Browser and select **Switch to Hybrid Design**. This is required to see the assembly and "Insert Component" commands.
+![Switch to Hybrid Design](images/2.A.1.0.png)
+![Switch to Hybrid Design](images/2.A.1.1.png)
+![Switch to Hybrid Design](images/2.A.1.2.png)
 
-3.  **Insert Component:** Go to the **Insert** menu in the top toolbar and select **Insert Component** (or search for it in the search window you can bring up with the 'S' hotkey). Navigate to the location in your Fusion 360 cloud project where you just uploaded the fixture and select it.
-![Insert Component](images/2.A.3.0.png)
-![Insert Component](images/2.A.3.1.png)
-![Insert Component](images/2.A.3.2.png)
+2.  **Insert Component:** Go to the **Insert** menu in the top toolbar and select **Insert Component** (or search for it in the search window you can bring up with the 'S' hotkey). Navigate to the location in your Fusion 360 cloud project where you just uploaded the fixture and select it.
+![Insert Component](images/2.A.2.0.png)
+![Insert Component](images/2.A.2.1.png)
+![Insert Component](images/2.A.2.2.png)
 
 ### B. Modeling the Stock and Alignment
 1.  **Create Stock Component:** Create a new component named "Stock". Sketch and extrude a box. You can set it to the exact dimensions of your physical stock material or something that encompasses your design.

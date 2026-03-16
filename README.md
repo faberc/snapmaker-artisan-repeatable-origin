@@ -8,6 +8,8 @@ This guide walks you through the usage of this repeatable CNC origin tool. It us
     * Download the F3D file and modify it in Fusion to fit your probe before printing.
 * **Optional: Buzzer Probe Hardware:** [Thingiverse: Simple Buzzer Device](https://www.thingiverse.com/thing:7305460)
 * **Custom Post-Processor:** [snapmaker_artisan_origin_tool_post_processor.cps](fusion_files/snapmaker_artisan_origin_tool_post_processor.cps)
+    * This post-processing script adds moves to clear the probe and rail fixture before moving over the stock and coming down to make the first cuts.
+    * It also makes sure to move to clearance height at the end of the job.
 * **Snapmaker Artisan 200W CNC Machine Profile:** [SnapmakerArtisan200WCNC_MachineProfile.mch](fusion_files/SnapmakerArtisan200WCNC_MachineProfile.mch)
 
 
@@ -109,9 +111,10 @@ This guide walks you through the usage of this repeatable CNC origin tool. It us
 ![Operation Setup](images/3.B.1.0.png)
 ![Operation Setup](images/3.B.1.1.png)
 
-2.  **Heights Tab (CRITICAL Logic):** * **Clearance Height:** Set to at least **10mm** from **WCS Origin**. 
-    * *Logic:* For example, if $Z0$ is at the top of a 20mm puck, a 10mm clearance ensures the bit moves at 30mm absolute height, safely clearing any rails.
-    * **Retract Height:** Set relative to **Stock Top**.
+2.  **Heights Tab (CRITICAL):** * **Clearance Height:** Set to at least **10mm** from **WCS Origin**. 
+    * *Reasoning:* For example, if $Z0$ is at the top of a 20mm puck, a 10mm clearance ensures the bit moves at 30mm absolute height, safely clearing any rails.
+    * **Retract Height:** Set relative to **Stock Top**. Ensure it is some positive value to clear the stock between tool moves.
+    * *Note:* You can check the clearance height clears the probe height by looking at the red line that appears while in the Heights tab.
 
 ![Heights Tab](images/3.B.2.0.png)
 ![Heights Tab](images/3.B.2.1.png)
@@ -120,7 +123,7 @@ This guide walks you through the usage of this repeatable CNC origin tool. It us
 
 ![Heights Tab](images/3.B.2.2.gif)
 
-3.  **Generate G-Code:** Right-click the toolpath and select **Post Process**. If you linked the GitHub script to your machine in Step 2, it will already be selected. Click **Post** to save your `.cnc` file to a USB drive.
+3.  **Generate G-Code:** Right-click the toolpath and select **Post Process**. If you linked the GitHub script to your machine in Step 2, it will already be selected. If you haven't, make sure you select the post-processing script from this repo. Click **Post** to save your `.cnc` file to a USB drive.
 ![Generate G-Code](images/3.B.3.0.png)
 ![Generate G-Code](images/3.B.3.1.png)
 ![Generate G-Code](images/3.B.3.2.png)
@@ -152,5 +155,5 @@ This guide walks you through the usage of this repeatable CNC origin tool. It us
 
 > **NOTE: The fixture may be updated soon to include a different mechanism for X/Y zeroing. Currently it is just done by eye.**
 
-5.  **Run:** Slide the probe puck out of the holster, disconnect the clip, close the machine doors, and start the job. The custom script will force an initial safety lift before moving toward the stock.
+5.  **Run:** Slide the probe puck out of the holster, disconnect the clip, close the machine doors, and start the job. The post-processor will first lift the cutting head to the clearance height before moving toward the stock.
 > **[VIDEO PLACEHOLDER: Video of the job running]**
